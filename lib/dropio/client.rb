@@ -162,7 +162,7 @@ class Dropio::Client
   
   # Sends an email +message+, containing the +asset+ to a list of +emails+
   def send_to_emails(asset, emails = [], message = nil)
-    params = { :medium => "drop", :emails => emails.join(","), :message => message }
+    params = { :medium => "email", :emails => emails.join(","), :message => message }
     send_asset(asset,params)
   end
   
@@ -284,7 +284,7 @@ class Dropio::Client
   def complete_request(request, host = URI.parse(Dropio.api_url).host)
     http = Net::HTTP.new(host)
     # Set to debug http output.
-    # http.set_debug_output $stderr
+    http.set_debug_output $stderr
     response = http.start { |http| http.request(request) }
 
     case response
