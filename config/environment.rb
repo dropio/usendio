@@ -12,5 +12,6 @@ Rails::Initializer.run do |config|
   }
 end
 
+include Dropio
 api_config = YAML.load(File.open(File.join(RAILS_ROOT,"config","api.yml")))
 Dropio.api_key = api_config["dropio"]["api_key"]
