@@ -7,8 +7,8 @@ Rails::Initializer.run do |config|
   config.load_paths += %W( #{RAILS_ROOT}/lib )
   config.time_zone = 'UTC'
   config.action_controller.session = {
-    :session_key => '_collabio_session',
-    :secret      => '0d68389d814e9c4aae6c84e1302b5e93391d940264188e81223870ec02d1a511822e88d623845306bf67621dbca38c2b8aa9edf9357506269133aaa7c9b18bcc'
+    :session_key => '_usendio_session',
+    :secret      => '6587ab668038b43a2e3799535758f4e07d4d753c130da2e8113e0270972e9f95ffe6840d50110c602572cfb2e0637eab1ebc5045361ea817ebdf269bdf3336ac'
   }
 end
 
