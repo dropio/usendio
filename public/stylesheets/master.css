@@ -8,7 +8,7 @@ input[type=text] {
 	height:40px;
 	border:solid 3px #5c5c5c;
 	padding:8px;
-	font-size:50px;
+	font-size:40px;
 	font-family:helvetica;
 	color:#5c5c5c;
 }
@@ -23,7 +23,7 @@ input[type=file] {
 	position:absolute; 
 	top:0px; 
 	left:0px; 
-	height:60px; 
+	height:40px; 
 	width:10px;
 }
 
