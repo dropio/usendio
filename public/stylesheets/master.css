@@ -5,7 +5,7 @@ body {
 
 input[type=text] {
 	width:500px;
-	height:65px;
+	height:40px;
 	border:solid 3px #5c5c5c;
 	padding:8px;
 	font-size:50px;
@@ -19,10 +19,16 @@ input[type=file] {
 	font-size:50px;
 	font-family:helvetica;
 	color:#5c5c5c;
+	opacity:.001; 
+	position:absolute; 
+	top:0px; 
+	left:0px; 
+	height:70px; 
+	width:500px;
 }
 
 dt {
-	padding-top:20px;
+	padding-top:10px;
 	float:left;
 	width:180px;
 	text-align:right;
@@ -34,4 +40,22 @@ dd {
 	float:left;
 	width: 400px;
 	text-align:left;
+}
+
+.terms {
+	color:#999;
+	font-size:12px;
+	text-align:center;
+}
+
+#poweredby {
+	float:left; 
+	height:40px; 
+	width:120px; 
+	cursor:pointer;
+}
+
+#diggit {
+	float:right; 
+	margin-right:60px;
 }
