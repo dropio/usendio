@@ -121,13 +121,13 @@ class Dropio::Client
   
   # Saves a +Comment+, requires admin token.
   def save_comment(comment)
-    token = get_default_token(asset.drop)
-    uri = URI::HTTP.build({:path => comment_path(asset.drop, asset, comment)})
+    token = get_default_token(comment.asset.drop)
+    uri = URI::HTTP.build({:path => comment_path(comment.asset.drop, comment.asset, comment)})
     form = create_form( { :token => token, :contents => contents })
     req = Net::HTTP::Put.new(uri.request_uri, DEFAULT_HEADER)
     req.set_form_data(form)
     comment = nil
-    complete_request(req) { |body| comment = Mapper.map_comments(asset, body) }
+    complete_request(req) { |body| comment = Mapper.map_comments(comment.asset, body) }
     comment
   end
   
@@ -183,7 +183,6 @@ class Dropio::Client
                          :contents => asset.contents })
     req = Net::HTTP::Put.new(uri.request_uri, DEFAULT_HEADER)
     req.set_form_data(form)
-    asset = nil
     complete_request(req) { |body| asset = Mapper.map_assets(asset.drop, body)}
     asset
   end
@@ -284,7 +283,7 @@ class Dropio::Client
   def complete_request(request, host = URI.parse(Dropio.api_url).host)
     http = Net::HTTP.new(host)
     # Set to debug http output.
-    http.set_debug_output $stderr
+    # http.set_debug_output $stderr
     response = http.start { |http| http.request(request) }
 
     case response
