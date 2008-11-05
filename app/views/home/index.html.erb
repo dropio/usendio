@@ -1,6 +1,5 @@
 <script>
 Event.observe(window, 'load', function() { setInterval ( "updateFaker()", 500 ); })
-$('upload_file_data').setOpacity(.001);
 
 function updateFaker() {
 	$('faker').value = $('upload_file_data').value;
@@ -10,19 +9,18 @@ function updateFaker() {
 <center>
 	<form action="/" method="post" enctype="multipart/form-data">
 	<div style="width: 928px; height:436px; background:url(/images/bg2.jpg); padding-top:220px; text-align:left; padding-left:20px;">
-		<du>
-			<dt>File:</dt>
-			<dd style="position:relative;">
+
+			<div class="dt">File:</div>
+			<div class="dd" style="position:relative;">
 				<input id="faker" type="text" name="faker" style="">
 				<%= file_field :upload, :file_data, :size => 6 %>
-				Files up to 100MB
-			</dd>
-		</du>
+				<br>Files up to 100MB
+			</div>
+
 		<div style="clear:both; height:50px;"></div>
-		<du>
-			<dt>Email(s):</dt>
-			<dd><input type="text" name="recipients">Separate with commas</dd>
-		</du>
+
+		<div class="dt">Email(s):</div>
+		<div class="dd"><input type="text" name="recipients"><br>Separate with commas</div>
 		
 		<%= token_tag %>
 		<div style="clear:both; height:40px;"></div>
@@ -40,3 +38,7 @@ function updateFaker() {
 	</form>
 	
 </center>
+
+<script>
+$('upload_file_data').setOpacity(.001);
+</script>
