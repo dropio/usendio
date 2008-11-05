@@ -16,14 +16,14 @@ input[type=text] {
 input[type=file] {
 	border:solid 3px #5c5c5c;
 	padding:8px;
-	font-size:50px;
+	font-size:40px;
 	font-family:helvetica;
 	color:#5c5c5c;
 	opacity:.001; 
 	position:absolute; 
 	top:0px; 
 	left:0px; 
-	height:40px; 
+	height:60px; 
 	width:10px;
 }
 
