@@ -28,7 +28,7 @@ class HomeController < ApplicationController
       filter = Regexp.new('^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$')
       emails.each {|email| (filter.match(email) ? @recipients : bad_emails) << email }
 
-      @asset.send_to_emails(@recipients)
+      AssetMailer.deliver_asset(@asset, @recipients)
 
       redirect_to @asset.generate_url
     end
