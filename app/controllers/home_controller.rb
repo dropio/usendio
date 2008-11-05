@@ -21,8 +21,8 @@ class HomeController < ApplicationController
     
     @asset = @drop.add_file(new_file_path)
     
-    @asset.create_comment("This file has been uploaded via usend.io.  It is currently converting, and soon there will be a preview on this page (if it is a recognized format).")
     @asset.create_comment("Email has been sent to the recipient(s) inviting them to view and download the sent file via usend.io, and you can invite others to view and download the media by linking directly to this page.")
+    @asset.create_comment("This file has been uploaded via usend.io.  It is currently converting, and soon there will be a preview on this page (if it is a recognized format).")
     
     FileUtils.rm_rf(new_file_path)
     
