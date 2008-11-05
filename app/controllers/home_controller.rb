@@ -1,3 +1,4 @@
+require 'ftools'
 class HomeController < ApplicationController
   def index
     return unless request.post? && params_valid?
@@ -8,12 +9,18 @@ class HomeController < ApplicationController
       :guests_can_delete => false,
       :expiration_length => "1_WEEK_FROM_LAST_VIEW"
       })
+      
+      
+    new_file_path = File.join(Dir::tmpdir, sanitize_filename(params[:upload][:file_data].original_filename))
     
-    original_directory = File.dirname(params[:upload][:file_data].local_path)
-    new_file_path = File.join(original_directory, sanitize_filename(params[:upload][:file_data].original_filename))
-    File.rename(params[:upload][:file_data].local_path, new_file_path)
+    if params[:upload][:file_data].is_a? StringIO
+      File.open(new_file_path, "w") { |file| file.write(params[:upload][:file_data].read) }
+    else
+      File.rename(params[:upload][:file_data].local_path, new_file_path)
+    end
     
     @asset = @drop.add_file(new_file_path)
+    FileUtils.rm_rf(new_file_path)
     
     if @asset
       @recipients, bad_emails = [],[]
